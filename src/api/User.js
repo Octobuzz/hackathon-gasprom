@@ -2,10 +2,20 @@ import request from "./Request.js";
 
 const user = {
 	getUser: (formData) => {
-		return request.get('/user/me');
+		return request.get('/users/me', {
+			headers: {
+				Authorization:
+				`Bearer ${localStorage.getItem('token')}`,
+			},});
 	},
 	updateUserData: (data) => {
-		return request.put('/user/me', data);
+		return request.put('/users/me', {
+
+			headers: {
+				Authorization:
+					`Bearer ${localStorage.getItem('token')}`,
+			},
+			body: data});
 	}
 };
 
