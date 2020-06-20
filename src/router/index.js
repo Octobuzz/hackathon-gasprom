@@ -4,7 +4,7 @@ import Dashboard from '../views/Dashboard.vue';
 import Auth from '../views/Auth.vue';
 import Create from "../views/CreateIdea.vue";
 import Home from "../views/Home.vue";
-import NotFound from "../views/NotFound";
+// import NotFound from "../views/NotFound.vue";
 import IdeaPage from "../views/IdeaPage.vue";
 
 Vue.use(VueRouter);
@@ -30,11 +30,11 @@ const routes = [
 		name: 'Добавить Идею',
 		component: Create,
 	},
-	{
-		path: '/*',
-		name: '404',
-		component: NotFound,
-	},
+	// {
+	// 	path: '/*',
+	// 	name: '404',
+	// 	component: NotFound,
+	// },
 	{
 		path: '/idea/:id',
 		name: 'Добавить Идею',
