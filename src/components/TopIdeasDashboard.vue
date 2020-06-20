@@ -1,14 +1,16 @@
 <template>
 	<div>
+		Самые популярные проблемы и идеи
 		<idea
-			v-for="(idea, index) in ideas"
+			v-for="(idea, index) in topIdeas.slice(0,5)"
 			:key="index"
 			:idea="idea"
+			@click.native="toIdea(idea.id)"
 		/>
-		<div
-			v-infinite-scroll="loadIdeas"
-			infinite-scroll-disabled="busy"
-			infinite-scroll-distance="10"
+		<modal
+			v-if="modalShow"
+			:id="activeIdea"
+			@close="modalShow = false"
 		/>
 	</div>
 </template>
@@ -22,10 +24,12 @@ import {Vue, Component, Prop} from 'vue-property-decorator';
 import shortIdeaCard from './ShortIdeaCard.vue';
 import {mapState} from "vuex";
 import Ideas from "../api/Ideas";
-import ideas from "../api/Ideas";
+import Modal from "./Modal.vue";
+
   @Component({
   	components: {
   		'idea': shortIdeaCard,
+  		Modal,
   	},
   	computed: {
   		...mapState({
@@ -34,23 +38,27 @@ import ideas from "../api/Ideas";
   	}
   })
 export default class TopIdeasDashboard extends Vue {
-    posts = 10;
-    mounted() {
+    activeIdea = 0;
+    modalShow = false;
+  	mounted() {
     	this.loadIdeas();
-    }
+  	}
 
-    // get sortTopIdeas() {
-    //  return this.ideas.sort((a, b) => {
-    //   return Number(a.twinkies) > Number(b.twinkies) ? 1 : -1
-    //  });
-    // }
+  	get topIdeas() {
+    	return this.ideas.sort((a, b) => {
+    		return Number(b.twinkies) - Number(a.twinkies);
+    	});
+  	}
 
-    loadIdeas() {
-    	this.posts+=10;
+  	loadIdeas() {
     	Ideas.getIdeas().then((response) => {
     		this.$store.commit('setIdeasCard', response.data);
-    		this.sortTopIdeas(response.data);
     	});
+  	}
+
+    toIdea(id) {
+    	this.activeIdea = id;
+    	this.modalShow = true;
     }
   }
 </script>
