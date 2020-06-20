@@ -8,30 +8,30 @@ import Home from "../views/Home.vue";
 Vue.use(VueRouter);
 
 const routes = [
-  {
-    path: '/',
-    name: 'Страница Идей',
-    component: Home,
-  },
-  {
-    path: '/dashboard',
-    name: 'Страница Идей',
-    component: Dashboard,
-  },
-  {
-    path: '/auth',
-    name: 'Авторизация',
-    component: Auth,
-  },
-  {
-    path: '/create-idea',
-    name: 'Добавить Идею',
-    component: Create,
-  },
+	{
+		path: '/',
+		name: 'Страница Идей',
+		component: Home,
+	},
+	{
+		path: '/dashboard',
+		name: 'Страница Идей',
+		component: Dashboard,
+	},
+	{
+		path: '/auth',
+		name: 'Авторизация',
+		component: Auth,
+	},
+	{
+		path: '/create-idea',
+		name: 'Добавить Идею',
+		component: Create,
+	},
 ];
 
 const router = new VueRouter({
-  routes,
+	routes,
 });
 
 export default router;
