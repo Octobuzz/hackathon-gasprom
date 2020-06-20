@@ -1,9 +1,17 @@
 <template>
 	<div class="dashboard-page">
-		<router-link to="/create-idea">
-			Создать идею
-		</router-link>
-		<feed />
+		<div class="container">
+			<div class="container__content">
+				<div class="container__wrapper">
+					<feed />
+				</div>
+			</div>
+			<div class="container__aside">
+				<p class="container__try">
+					пробный рейтинг
+				</p>
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -22,4 +30,31 @@ export default class Dashboard {
 </script>
 
 <style scoped lang="scss">
+.dashboard-page {
+  background-color: $grey;
+  margin-top: 60px;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  //background-color: green; /**/
+  &__content {
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    //background-color: red; /**/
+  }
+  &__aside {
+    width: 20%;
+    //background-color: blue; /**/
+  }
+  &__wrapper {
+    width: 90%;
+    margin: 0 auto;
+    //background-color: yellow; /**/
+  }
+}
 </style>
