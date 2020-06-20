@@ -17,7 +17,10 @@ const ideas = {
 					`Bearer ${localStorage.getItem('token')}`,
 			},
 		});
-	}
+	},
+  updateIdea: (id, data) => {
+    return request.put(`/idea-cards/${id}`, data)
+  }
 };
 
 export default ideas;

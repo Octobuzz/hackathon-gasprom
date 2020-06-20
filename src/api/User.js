@@ -1,22 +1,37 @@
 import request from "./Request.js";
 
 const user = {
-	getUser: (formData) => {
+	getUser: () => {
 		return request.get('/users/me', {
 			headers: {
 				Authorization:
 				`Bearer ${localStorage.getItem('token')}`,
 			},});
 	},
-	updateUserData: (data) => {
-		return request.put('/users/me', {
+	updateUserData: (id ,data) => {
+		return request.put(`/users/${id}`,
 
-			headers: {
-				Authorization:
-					`Bearer ${localStorage.getItem('token')}`,
-			},
-			body: data});
-	}
+		  data,
+    {
+      headers: {
+        Authorization:
+          `Bearer ${localStorage.getItem('token')}`,
+      }
+    }
+    );
+	},
+
+  setInvestments(data) {
+    return request.post('/investments',
+      data,
+      {
+        headers: {
+          Authorization:
+            `Bearer ${localStorage.getItem('token')}`,
+        }
+      }
+    )
+  }
 };
 
 export default user;

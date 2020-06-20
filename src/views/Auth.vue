@@ -54,6 +54,7 @@ export default class Auth extends Vue{
 	  auth() {
 	  	login.postLogin(this.authData).then((response) => {
 	  		localStorage.setItem('token', `${response.data.jwt}`);
+	  		this.$store.commit('setUser', response.data.user);
 	  		this.$router.push('/dashboard');
 	  	});
 	  }
