@@ -46,7 +46,7 @@ export default class TopIdeasDashboard extends Vue {
 
   	get topIdeas() {
     	return this.ideas.sort((a, b) => {
-    		return Number(a.twinkies) > Number(b.twinkies);
+    		return Number(b.twinkies) - Number(a.twinkies);
     	});
   	}
 
