@@ -6,7 +6,7 @@
 			<p>email: {{ user.email }}</p>
 			<p>Поймано призраков: {{ user.ghosts }}</p>
 			<p>Вы можете подарить призраков: {{ user.present_ghosts }}</p>
-			<p>Твинки: {{user.twinkies}}</p>
+			<p>Твинки: {{ user.twinkies }}</p>
 		</div>
 		<div class="personal-page__idea-cards">
 			Идеи которые я поддерживаю
@@ -16,6 +16,11 @@
 					:key="index"
 					:idea="idea"
 					@click.native="toIdea(idea.id)"
+				/>
+				<modal
+					v-if="modalShow"
+					:id="activeIdea"
+					@close="modalShow = false"
 				/>
 				<div
 					v-infinite-scroll="loadMore"
@@ -33,10 +38,12 @@ import { Vue, Component} from 'vue-property-decorator';
 import {mapState} from 'vuex';
 import IdeaCard from '../components/IdeaCard.vue';
 import Ideas from "../api/Ideas.js";
+import Modal from '../components/Modal.vue';
 
 @Component({
 	components: {
 	  'idea': IdeaCard,
+		Modal,
 	},
 	computed: {
 	  ...mapState({
@@ -47,6 +54,9 @@ import Ideas from "../api/Ideas.js";
 }
 )
 export default class Personal extends Vue {
+  activeIdea = 0;
+  modalShow = false;
+
   posts = 10;
 
   created() {
@@ -72,7 +82,8 @@ export default class Personal extends Vue {
   }
 
   toIdea(id) {
-  	return;
+  	this.activeIdea = id;
+  	this.modalShow = true;
   }
 }
 </script>

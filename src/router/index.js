@@ -5,7 +5,6 @@ import Auth from '../views/Auth.vue';
 import Create from "../views/CreateIdea.vue";
 import Home from "../views/Home.vue";
 import NotFound from "../views/NotFound.vue";
-import IdeaPage from "../views/IdeaPage.vue";
 import FinalFight from "../views/FinalFight.vue";
 import Personal from "../views/Personal.vue";
 
@@ -37,12 +36,6 @@ const routes = [
 	 name: '404',
 	 component: NotFound,
 	},
-	{
-		path: '/idea/:id',
-		name: 'Добавить Идею',
-		component: IdeaPage,
-	},
-
 	{
 		path: '/final-fight',
 		name: 'Итоговая Битва',

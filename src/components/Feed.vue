@@ -6,6 +6,11 @@
 			:idea="idea"
 			@click.native="toIdea(idea.id)"
 		/>
+		<modal
+			v-if="modalShow"
+			:id="activeIdea"
+			@close="modalShow = false"
+		/>
 		<div
 			v-infinite-scroll="loadMore"
 			infinite-scroll-disabled="busy"
@@ -19,10 +24,12 @@ import {Vue, Component} from 'vue-property-decorator';
 import Ideas from '../api/Ideas';
 import IdeaCard from './IdeaCard.vue';
 import { mapState }  from 'vuex';
+import Modal from '../components/Modal.vue';
 
 @Component({
 	components: {
 	  'idea': IdeaCard,
+		Modal,
 	},
 	computed: {
 		...mapState({
@@ -32,6 +39,8 @@ import { mapState }  from 'vuex';
 })
 export default class Feed extends Vue {
 		posts = 10;
+		activeIdea = 0;
+		modalShow = false;
 
 		mounted() {
 		  this.loadIdeas();
@@ -48,7 +57,8 @@ export default class Feed extends Vue {
 		}
 
 		toIdea(id) {
-		  this.$router.push(`/idea/${id}`);
+		  this.activeIdea = id;
+		  this.modalShow = true;
 		}
 }
 </script>
