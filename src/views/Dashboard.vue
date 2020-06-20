@@ -1,6 +1,7 @@
 <template>
 	<div class="dashboard-page">
 		главная страница
+		<router-link to="/create-idea">Создать идею</router-link>
 		<feed></feed>
 	</div>
 </template>
