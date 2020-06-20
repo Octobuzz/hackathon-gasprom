@@ -37,26 +37,37 @@
 		</ul>
 		<ul class="header__balance">
 			<li class="header__balance-item header__balance-item--twinkie">
-				Твинки <span class="header__balance-count">: 1200</span>
+				Твинки <span class="header__balance-count">: {{ user.twinkies }}</span>
 			</li>
 			<li class="header__balance-item header__balance-item--ghost">
-				Призраки <span class="header__balance-count">: 1000</span>
+				Призраки <span class="header__balance-count">: {{ user.ghosts }}</span>
 			</li>
 		</ul>
-		<div class="header__user-wrapper">
-			<span class="header__username">Никита</span>
+		<div
+			class="header__user-wrapper"
+			@click="toPersonal"
+		>
+			<span class="header__username">{{ user.username }}</span>
 		</div>
 	</div>
 </template>
 
 <script>
 import { Vue, Component } from 'vue-property-decorator';
+import { mapState } from 'vuex';
 
 @Component({
-
+	computed: {
+		...mapState({
+			user: state => state.user,
+		})
+	}
 })
 export default class Header extends Vue{
 
+	toPersonal() {
+	  this.$router.push('/personal');
+	}
 }
 </script>
 
