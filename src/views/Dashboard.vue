@@ -35,8 +35,7 @@ export default class Dashboard {
 <style scoped lang="scss">
 .dashboard-page {
   background-color: $grey;
-  margin-top: 60px;
-  padding-bottom: 50px;
+  padding: 75px 0 50px;
   overflow: scroll;
 }
 

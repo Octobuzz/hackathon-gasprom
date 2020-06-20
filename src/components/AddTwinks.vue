@@ -2,7 +2,7 @@
 	<div class="add-twinks">
 		<button
 			class="add-twinks__button"
-			@click="twinks"
+			@click.stop="twinks"
 		>
 			Вложить 10
 		</button>
