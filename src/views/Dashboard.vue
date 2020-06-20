@@ -3,6 +3,7 @@
 		<div class="container">
 			<div class="container__content">
 				<div class="container__wrapper">
+					<sort-tabs />
 					<feed />
 				</div>
 			</div>
@@ -18,10 +19,12 @@
 <script>
 import { Vue, Component } from 'vue-property-decorator';
 import Feed from '../components/Feed.vue';
+import SortTabs from '../components/SortTabs.vue';
 
 	@Component({
 		components : {
 		  'feed': Feed,
+			'sort-tabs': SortTabs,
 		}
 	})
 export default class Dashboard {
