@@ -55,7 +55,7 @@ import { Vue, Component } from 'vue-property-decorator';
 @Component({
 
 })
-export default class Header {
+export default class Header extends Vue{
 
 }
 </script>
@@ -64,7 +64,7 @@ export default class Header {
 .header {
   box-sizing: border-box;
   width: 100%;
-  min-width: 900px; /**/
+  min-width: 950px; /**/
   height: 60px;
   display: flex;
   justify-content: space-between;
