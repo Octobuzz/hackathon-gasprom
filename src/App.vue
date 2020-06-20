@@ -1,7 +1,7 @@
 <template>
-  <div id="app">
-    <router-view class="page"/>
-  </div>
+	<div id="app">
+		<router-view class="page" />
+	</div>
 </template>
 
 <style lang="scss">
@@ -33,7 +33,6 @@ html, body {
         url("./assets/fonts/ProximaNova-Bold.woff") format("woff");
   font-weight: 900;
 }
-
 
   a {
     font-weight: bold;

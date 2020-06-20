@@ -34,7 +34,6 @@ export default class Feed extends Vue {
 		loadIdeas() {
 		  this.posts+=10;
 			Ideas.getIdeas().then((response) => {
-			  console.log(response.data);
 			  this.ideas = response.data;
 			});
 		}
