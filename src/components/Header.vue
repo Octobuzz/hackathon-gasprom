@@ -63,7 +63,7 @@ import { mapState } from 'vuex';
 		})
 	}
 })
-export default class Header {
+export default class Header extends Vue{
 
 	toPersonal() {
 	  this.$router.push('/personal');
@@ -75,7 +75,7 @@ export default class Header {
 .header {
   box-sizing: border-box;
   width: 100%;
-  min-width: 900px; /**/
+  min-width: 950px; /**/
   height: 60px;
   display: flex;
   justify-content: space-between;

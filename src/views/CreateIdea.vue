@@ -1,17 +1,21 @@
 <template>
 	<div class="creation-page">
+		<page-header />
+		<h1 class="creation-page__headline">
+			Создание идеи:
+		</h1>
 		<form
 			class="creation-page__form"
 			@submit="createIssue"
 		>
-			<h1>Страница создания идеи</h1>
 			<p v-for="error in errors">
 				- {{ error }}
 			</p>
-			<label>
-				Название идеи
+			<label class="creation-page__label">
+				Заголовок:
 				<input
 					v-model="newIdea.idea_name"
+					class="creation-page__input creation-page__input--headline"
 					type="text"
 				/>
 			</label>
@@ -19,13 +23,19 @@
 				v-model="newIdea.text"
 				:editor="editor"
 			/>
-			<label>
-				Выберите тип идеи
-				<select v-model="newIdea.tag">
+			<label class="creation-page__label">
+				Тэг идеи:
+				<select
+					v-model="newIdea.tag"
+					class="creation-page__input"
+				>
 					<option v-for="tag in ideaTags">{{ tag }}</option>
 				</select>
 			</label>
-			<button type="submit">
+			<button
+				class="creation-page__button"
+				type="submit"
+			>
 				Отправить идею
 			</button>
 		</form>
@@ -36,11 +46,13 @@
 import {Vue, Component } from 'vue-property-decorator';
 import Ckeditor from '@ckeditor/ckeditor5-build-classic';
 import Ideas from '../api/Ideas.js';
+import Header from '../components/Header.vue';
 import {mapState} from 'vuex';
 import user from "../api/User";
 
 	@Component({
-		computed: {
+		components : {
+			'page-header': Header,
 		}
 	})
 export default class Create extends Vue {
@@ -57,12 +69,12 @@ export default class Create extends Vue {
 		createIssue() {
 			this.errors = [];
 			if (!this.newIdea.idea_name) {
-				this.errors.push("Введите название идеи");
+				this.errors.push("Введите заголовок");
 
 				return;
 			}
 			if (!this.newIdea.text) {
-				this.errors.push("Введите Идею");
+				this.errors.push("Введите идею");
 
 				return;
 			}
@@ -87,12 +99,62 @@ export default class Create extends Vue {
 	.creation-page {
 		display: flex;
 		flex-direction: column;
+    padding-top: 60px;
+    background-color: $grey;
+    &__headline {
+      @include reset-text;
+      width: 75%;
+      margin: 25px auto;
+      text-align: left;
+    }
 		&__form {
-			display: flex;
+      width: 75%;
+      padding: 25px;
+      margin: 0 auto;
+      display: flex;
 			flex-direction: column;
+      background-color: $white;
+      border-radius: 5px;
+      -webkit-box-shadow: 0px 2px 22px -10px rgba(153,153,153,0.3);
+      -moz-box-shadow: 0px 2px 22px -10px rgba(153,153,153,0.3);
+      box-shadow: 0px 2px 22px -10px rgba(153,153,153,0.3);
 		}
+    &__label {
+      font-weight: bold;
+      text-align: left;
+      margin-bottom: 25px;
+    }
+    &__input {
+      padding: 10px;
+      margin-left: 10px;
+      border: 1px solid $night;
+      outline: none;
+      &--headline {
+        width: 50%;
+      }
+      &:hover,
+      &:focus {
+        border: 1px solid $button-violet;
+        box-shadow: inset 0 0 0 1px $button-violet;
+        transition: all 0.1s ease;
+      }
+    }
+    &__button {
+      @include reset-button();
+      padding: 10px 15px;
+      font-weight: bold;
+      color: $white;
+      background-color: $azure;
+      &:hover,
+      &:focus {
+        background-color: $button-hover;
+      }
+      &:active {
+        background-color: $button-violet;
+      }
+    }
 	}
 	.ck-editor__editable_inline {
-		height: 500px;
+		margin-bottom: 25px;
 	}
 </style>
