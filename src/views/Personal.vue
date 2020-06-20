@@ -6,6 +6,7 @@
 			<p>email: {{ user.email }}</p>
 			<p>Поймано призраков: {{ user.ghosts }}</p>
 			<p>Вы можете подарить призраков: {{ user.present_ghosts }}</p>
+			<p>Твинки: {{user.twinkies}}</p>
 		</div>
 		<div class="personal-page__idea-cards">
 			Идеи которые я поддерживаю
