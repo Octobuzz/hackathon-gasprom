@@ -2,7 +2,7 @@
 	<div class="idea-feed">
 		<idea
 			v-for="idea in ideas"
-			:idea="idea"
+      :idea="idea"
 		/>
 		<div
 			v-infinite-scroll="loadIdeas"
@@ -16,15 +16,20 @@
 import {Vue, Component} from 'vue-property-decorator';
 import Ideas from '../api/Ideas';
 import IdeaCard from './IdeaCard.vue';
+import { mapState }  from 'vuex';
 
 @Component({
 	components: {
 	  'idea': IdeaCard,
-	}
+	},
+	computed: {
+    ...mapState({
+      ideas: state => state.ideas_cards_by_id,
+    }),
+  }
 })
 export default class Feed extends Vue {
 		posts = 10;
-		ideas = []
 
 		mounted() {
 		  this.loadIdeas();
@@ -33,7 +38,7 @@ export default class Feed extends Vue {
 		loadIdeas() {
 		  this.posts+=10;
 			Ideas.getIdeas().then((response) => {
-			  this.ideas = response.data;
+			  this.$store.commit('setIdeasCard', response.data);
 			});
 		}
 }
