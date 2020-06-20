@@ -52,7 +52,7 @@ export default class AddTwinks extends Vue {
   &__button {
     @include reset-button();
     padding: 15px 10px 15px 15px;
-    background-color: $button-violet;
+    background-color: $azure;
     border-radius: 5px;
     color: $white;
     font-weight: bold;

@@ -1,13 +1,23 @@
 <template>
-<div class="sort">
-  <ul class="sort__list">
-    <li class="sort__item sort__item--active">Внутренние сервисы</li>
-    <li class="sort__item">Встреча</li>
-    <li class="sort__item">Офис</li>
-    <li class="sort__item">Оптимизация платформы</li>
-    <li class="sort__item">Другое</li>
-  </ul>
-</div>
+	<div class="sort">
+		<ul class="sort__list">
+			<li class="sort__item sort__item--active">
+				Внутренние сервисы
+			</li>
+			<li class="sort__item">
+				Встреча
+			</li>
+			<li class="sort__item">
+				Офис
+			</li>
+			<li class="sort__item">
+				Оптимизация платформы
+			</li>
+			<li class="sort__item">
+				Другое
+			</li>
+		</ul>
+	</div>
 </template>
 
 <script>
@@ -25,7 +35,7 @@ export default class SortTabs {
 .sort {
   max-width: 650px;
   padding: 15px;
-  margin: 0 auto 15px auto;
+  margin: 15px auto;
   background-color: $white;
   border-radius: 5px;
   -webkit-box-shadow: 0px 2px 22px -10px rgba(153,153,153,0.3);
