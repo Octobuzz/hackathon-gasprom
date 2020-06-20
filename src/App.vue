@@ -6,7 +6,7 @@
 
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Proxima Regular", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -18,6 +18,20 @@
 html, body {
   width: 100%;
   height: 100%;
+}
+
+@font-face {
+  font-family: "Proxima Regular";
+  src: url("./assets/fonts/ProximaNova-Regular.ttf") format("opentype"),
+        url("./assets/fonts/ProximaNova-Regular.woff") format("woff");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Proxima Bold";
+  src: url("./assets/fonts/ProximaNova-Bold.ttf") format("opentype"),
+        url("./assets/fonts/ProximaNova-Bold.woff") format("woff");
+  font-weight: 900;
 }
 
 
