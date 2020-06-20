@@ -3,10 +3,16 @@ import VueRouter from 'vue-router';
 import Dashboard from '../views/Dashboard.vue';
 import Auth from '../views/Auth.vue';
 import Create from "../views/CreateIdea.vue";
+import Home from "../views/Home.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
+  {
+    path: '/',
+    name: 'Страница Идей',
+    component: Home,
+  },
   {
     path: '/dashboard',
     name: 'Страница Идей',
