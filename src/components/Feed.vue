@@ -1,8 +1,9 @@
 <template>
 	<div class="idea-feed">
 		<idea
-			v-for="idea in ideas"
-      :idea="idea"
+			v-for="(idea, index) in ideas"
+			:idea="idea"
+      :key="index"
 		/>
 		<div
 			v-infinite-scroll="loadIdeas"

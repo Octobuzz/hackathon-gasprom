@@ -47,4 +47,12 @@ html, body {
     width: 100%;
     height: 100%;
   }
+
+.visually-hidden {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}
 </style>
