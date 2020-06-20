@@ -65,11 +65,11 @@ export default class Dashboard {
     width: 100%;
     margin: 0 auto;
 		display: flex;
+		justify-content: space-around;
     //background-color: yellow; /**/
   }
 	&__feed-wrapper {
-		width: 100%;
-		margin-right: 15px;
+		width: 650px;
 		overflow-y: scroll;
 		overflow-x: visible;
 		&::-webkit-scrollbar {
