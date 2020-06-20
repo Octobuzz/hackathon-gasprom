@@ -8,7 +8,7 @@
 			v-html="idea.text"
 		/>
 		<div class="idea__amount">
-			Твинки:{{ twinkies }}
+			Твинки:{{ twinkies || 0 }}
 		</div>
 		<add-twinks
 			class="idea__button"

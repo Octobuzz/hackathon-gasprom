@@ -1,7 +1,7 @@
 <template>
 	<div class="idea-feed">
 		<idea
-			v-for="(idea, index) in ideas"
+			v-for="(idea, index) in ideas.slice().reverse()"
 			:key="index"
 			:idea="idea"
 			@click.native="toIdea(idea.id)"
@@ -33,7 +33,7 @@ import Modal from '../components/Modal.vue';
 	},
 	computed: {
 		...mapState({
-			ideas: state => state.ideas_cards_by_id,
+			ideas: state => state.ideas_cards,
 		}),
 	}
 })
@@ -43,6 +43,7 @@ export default class Feed extends Vue {
 		modalShow = false;
 
 		mounted() {
+			console.log(this.ideas);
 		  this.loadIdeas();
 		}
 
