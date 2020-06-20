@@ -18,8 +18,16 @@ const ideas = {
 			},
 		});
 	},
+	getIdea: (id) => {
+		return request.get(`/idea-cards/${id}`, {
+			headers: {
+				Authorization:
+					`Bearer ${localStorage.getItem('token')}`,
+			},
+		});
+	},
   updateIdea: (id, data) => {
-    return request.put(`/idea-cards/${id}`, data)
+    return request.put(`/idea-cards/${id}`, data);
   }
 };
 

@@ -46,7 +46,13 @@ export default class Create extends Vue {
     	text: "",
     	tag:"",
     }
-		errors = []
+		errors = [];
+
+    mounted() {
+      this.editor.editing.view.change( writer => {
+        writer.setStyle( 'height', '200px', editor.editing.view.document.getRoot() );
+      } );
+		}
 
 		createIssue() {
 			this.errors = [];

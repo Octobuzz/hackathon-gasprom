@@ -3,6 +3,7 @@
 		<idea
 			v-for="(idea, index) in ideas"
 			:idea="idea"
+			@click.native="toIdea(idea.id)"
       :key="index"
 		/>
 		<div
@@ -41,6 +42,10 @@ export default class Feed extends Vue {
 			Ideas.getIdeas().then((response) => {
 			  this.$store.commit('setIdeasCard', response.data);
 			});
+		}
+
+		toIdea(id) {
+		  this.$router.push(`/idea/${id}`);
 		}
 }
 </script>
