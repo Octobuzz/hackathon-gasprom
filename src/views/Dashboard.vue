@@ -9,9 +9,7 @@
 						<feed />
 					</div>
 					<div class="container__aside">
-						<p class="container__try">
-							пробный рейтинг
-						</p>
+						<top-ideas />
 					</div>
 				</div>
 			</div>
@@ -24,12 +22,14 @@ import { Vue, Component } from 'vue-property-decorator';
 import Feed from '../components/Feed.vue';
 import SortTabs from '../components/SortTabs.vue';
 import Header from '../components/Header.vue';
+import topIdeas from '../components/TopIdeasDashboard.vue';
 
 	@Component({
 		components : {
 		  'feed': Feed,
 			'sort-tabs': SortTabs,
 			'page-header': Header,
+			'top-ideas': topIdeas,
 		}
 	})
 export default class Dashboard {
@@ -56,7 +56,7 @@ export default class Dashboard {
 		position: relative;
   }
   &__aside {
-		height: 100px;
+		height: fit-content;
 		width: 25%;
     min-width: 200px;
     margin-top: 15px;
