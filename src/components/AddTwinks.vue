@@ -2,7 +2,7 @@
 	<div class="add-twinks">
 		<button
 			class="add-twinks__button"
-			@click="twinks"
+			@click.stop="twinks"
 		>
 			Классная идея
 		</button>

@@ -6,6 +6,7 @@ import Create from "../views/CreateIdea.vue";
 import Home from "../views/Home.vue";
 // import NotFound from "../views/NotFound.vue";
 import IdeaPage from "../views/IdeaPage.vue";
+import TopIdeasDashboard from "../views/TopIdeasDashboard.vue";
 
 Vue.use(VueRouter);
 
@@ -40,6 +41,12 @@ const routes = [
 		name: 'Добавить Идею',
 		component: IdeaPage,
 	},
+
+  {
+    path: '/top-ideas',
+    name: 'Топ идей',
+    component: TopIdeasDashboard,
+  },
 ];
 
 const router = new VueRouter({
