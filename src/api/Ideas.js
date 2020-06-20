@@ -2,13 +2,13 @@ import request from "./Request.js";
 
 const ideas = {
 	postIdea: (data) => {
-		return request.post('/idea-cards',{
+		return request.post('/idea-cards',data, {
 
 			headers: {
 				Authorization:
 					`Bearer ${localStorage.getItem('token')}`,
 			},
-			body: data});
+		});
 	},
 	getIdeas: () => {
 		return request.get('/idea-cards', {
@@ -26,9 +26,9 @@ const ideas = {
 			},
 		});
 	},
-  updateIdea: (id, data) => {
-    return request.put(`/idea-cards/${id}`, data);
-  }
+	updateIdea: (id, data) => {
+		return request.put(`/idea-cards/${id}`, data);
+	}
 };
 
 export default ideas;

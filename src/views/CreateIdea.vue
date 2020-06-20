@@ -36,42 +36,49 @@
 import {Vue, Component } from 'vue-property-decorator';
 import Ckeditor from '@ckeditor/ckeditor5-build-classic';
 import Ideas from '../api/Ideas.js';
+import {mapState} from 'vuex';
+import user from "../api/User";
 
-	@Component()
+	@Component({
+		computed: {
+		}
+	})
 export default class Create extends Vue {
 	  ideaTags = ["Выберите вариант", "Внутренние сервисы", "Встреча", "Офис", "Оптимизация платформы", "Другое"]
     editor = Ckeditor;
     newIdea = {
+    	create_user: JSON.parse(localStorage.getItem('user')),
     	idea_name: "",
     	text: "",
     	tag:"",
     }
 		errors = [];
 
-    mounted() {
-      this.editor.editing.view.change( writer => {
-        writer.setStyle( 'height', '200px', editor.editing.view.document.getRoot() );
-      } );
-		}
-
 		createIssue() {
 			this.errors = [];
 			if (!this.newIdea.idea_name) {
 				this.errors.push("Введите название идеи");
+
+				return;
 			}
 			if (!this.newIdea.text) {
 				this.errors.push("Введите Идею");
+
+				return;
 			}
 			if (!this.newIdea.tag) {
 				this.errors.push("Укажите тэг");
-			} else {
-				Ideas.postIdea(this.newIdea).then(() => {
-					this.$router.push('/dashboard');
-				}).catch(() => {
+
+				return;
+			}
+
+			Ideas.postIdea(this.newIdea).then(() => {
+				this.$router.push('/dashboard');
+			}).catch(() => {
 				  this.errors = [];
 				  this.errors.push("Возникла ошибка подключения, попробуйте позже");
-				});
-			}
+			});
+
 		}
 	}
 </script>

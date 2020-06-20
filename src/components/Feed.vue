@@ -7,7 +7,7 @@
 			@click.native="toIdea(idea.id)"
 		/>
 		<div
-			v-infinite-scroll="loadIdeas"
+			v-infinite-scroll="loadMore"
 			infinite-scroll-disabled="busy"
 			infinite-scroll-distance="10"
 		/>
@@ -38,10 +38,13 @@ export default class Feed extends Vue {
 		}
 
 		loadIdeas() {
-		  this.posts+=10;
 			Ideas.getIdeas().then((response) => {
 			  this.$store.commit('setIdeasCard', response.data);
 			});
+		}
+
+		loadMore(){
+		  this.posts+=10;
 		}
 
 		toIdea(id) {
