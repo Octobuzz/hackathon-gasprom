@@ -1,0 +1,25 @@
+$azure: #0057b6;
+$violet: #5960ea;
+$white: #ffffff;
+$night: #262c40;
+$button-violet: #9660d6;
+$button-hover: #853FDB;
+$red: #c84f4f;
+
+@mixin reset-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@mixin reset-text {
+  margin: 0;
+  padding: 0;
+}
+
+@mixin reset-button {
+  box-sizing: border-box;
+  border: none;
+  font: inherit;
+  outline: none;
+}
