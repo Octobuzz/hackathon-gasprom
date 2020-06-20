@@ -1,7 +1,7 @@
 <template>
-  <div id="app">
-    <router-view class="page"/>
-  </div>
+	<div id="app">
+		<router-view class="page" />
+	</div>
 </template>
 
 <style lang="scss">
@@ -20,18 +20,16 @@ html, body {
   height: 100%;
 }
 
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-
   .page{
     width: 100%;
     height: 100%;
   }
+
+.visually-hidden {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}
 </style>
