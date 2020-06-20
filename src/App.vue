@@ -11,6 +11,7 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  line-height: 24px;
   height: 100%;
   width: 100%;
 }
@@ -33,15 +34,6 @@ html, body {
         url("./assets/fonts/ProximaNova-Bold.woff") format("woff");
   font-weight: 900;
 }
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
 
   .page{
     width: 100%;

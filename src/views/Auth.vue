@@ -92,11 +92,11 @@ export default class Auth extends Vue{
     position: relative;
     &::after {
       content: "";
-      width: 65%;
+      width: 60%;
       height: 3px;
       position: absolute;
       background-color: $button-violet;
-      bottom: 0;
+      bottom: -5px;
       left: 50%;
       transform: translateX(-50%);
     }
