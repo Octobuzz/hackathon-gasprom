@@ -36,6 +36,8 @@ export default class Dashboard {
 .dashboard-page {
   background-color: $grey;
   margin-top: 60px;
+  padding-bottom: 50px;
+  overflow: scroll;
 }
 
 .container {
