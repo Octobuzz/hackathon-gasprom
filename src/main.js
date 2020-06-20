@@ -4,6 +4,9 @@ import router from './router';
 import store from './store';
 import 'normalize.css';
 import './registerServiceWorker';
+import infiniteScroll from 'vue-infinite-scroll';
+
+Vue.use(infiniteScroll)
 
 Vue.config.productionTip = false;
 

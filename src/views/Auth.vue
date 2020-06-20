@@ -31,6 +31,7 @@
 	  auth() {
 			login.postLogin(this.authData).then((response) => {
 				localStorage.setItem('token', `${response.data.jwt}`)
+				this.$router.push('/dashboard');
 			})
 		}
   }
