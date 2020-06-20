@@ -2,9 +2,9 @@
 	<div class="idea-feed">
 		<idea
 			v-for="(idea, index) in ideas"
+			:key="index"
 			:idea="idea"
 			@click.native="toIdea(idea.id)"
-      :key="index"
 		/>
 		<div
 			v-infinite-scroll="loadIdeas"
@@ -25,10 +25,10 @@ import { mapState }  from 'vuex';
 	  'idea': IdeaCard,
 	},
 	computed: {
-    ...mapState({
-      ideas: state => state.ideas_cards_by_id,
-    }),
-  }
+		...mapState({
+			ideas: state => state.ideas_cards_by_id,
+		}),
+	}
 })
 export default class Feed extends Vue {
 		posts = 10;
@@ -50,6 +50,9 @@ export default class Feed extends Vue {
 }
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+	.idea-feed {
+		height: 85vh;
+		margin: 0 auto;
+	}
 </style>

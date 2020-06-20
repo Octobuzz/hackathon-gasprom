@@ -23,9 +23,9 @@ export default class SortTabs {
 
 <style scoped lang="scss">
 .sort {
-  width: 650px;
+  max-width: 650px;
   padding: 15px;
-  margin: 15px 0;
+  margin: 0 auto 15px auto;
   background-color: $white;
   border-radius: 5px;
   -webkit-box-shadow: 0px 2px 22px -10px rgba(153,153,153,0.3);

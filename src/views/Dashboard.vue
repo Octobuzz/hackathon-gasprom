@@ -3,14 +3,16 @@
 		<div class="container">
 			<div class="container__content">
 				<div class="container__wrapper">
-					<sort-tabs />
-					<feed />
+					<div class="container__feed-wrapper">
+						<sort-tabs />
+						<feed />
+					</div>
+					<div class="container__aside">
+						<p class="container__try">
+							пробный рейтинг
+						</p>
+					</div>
 				</div>
-			</div>
-			<div class="container__aside">
-				<p class="container__try">
-					пробный рейтинг
-				</p>
 			</div>
 		</div>
 	</div>
@@ -36,7 +38,7 @@ export default class Dashboard {
 .dashboard-page {
   background-color: $grey;
   padding: 75px 0 50px;
-  overflow: scroll;
+	height: 100vh;
 }
 
 .container {
@@ -49,16 +51,30 @@ export default class Dashboard {
     width: 70%;
     margin: 0 auto;
     display: flex;
+		position: relative;
     //background-color: red; /**/
   }
   &__aside {
-    width: 20%;
+		height: 100px;
+		width: 20%;
+		background-color: $white;
+		border-radius: 5px;
     //background-color: blue; /**/
   }
   &__wrapper {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
+		display: flex;
     //background-color: yellow; /**/
   }
+	&__feed-wrapper {
+		width: 100%;
+		margin-right: 15px;
+		overflow-y: scroll;
+		overflow-x: visible;
+		&::-webkit-scrollbar {
+			display: none;
+		}
+	}
 }
 </style>
