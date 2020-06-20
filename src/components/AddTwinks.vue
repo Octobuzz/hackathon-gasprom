@@ -4,7 +4,7 @@
 			class="add-twinks__button"
 			@click="twinks"
 		>
-			Вложить твинки
+			Вложить 10
 		</button>
 	</div>
 </template>
@@ -47,6 +47,31 @@ export default class AddTwinks extends Vue {
   }
 </script>
 
-<style lang="scss" scoped>
-
+<style scoped lang="scss">
+.add-twinks {
+  &__button {
+    @include reset-button();
+    padding: 15px 10px 15px 15px;
+    background-color: $button-violet;
+    border-radius: 5px;
+    color: $white;
+    font-weight: bold;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover,
+    &:focus {
+      background-color: $button-hover;
+    }
+    &:active {
+      background-color: $button-violet;
+    }
+    &::after {
+      content: url("../assets/svg/macaron.svg");
+      width: 40px;
+      height: 30px;
+    }
+  }
+}
 </style>
