@@ -8,6 +8,7 @@ import NotFound from "../views/NotFound.vue";
 import IdeaPage from "../views/IdeaPage.vue";
 import FinalFight from "../views/FinalFight.vue";
 import TopIdeasDashboard from "../views/TopIdeasDashboard.vue";
+import Personal from "../views/Personal.vue";
 
 Vue.use(VueRouter);
 
@@ -52,6 +53,11 @@ const routes = [
 		path: '/final-fight',
 		name: 'Итоговая Битва',
 		component: FinalFight,
+	},
+	{
+		path: '/personal',
+		name: 'Личный кабинет',
+		component: Personal,
 	}
 ];
 
