@@ -32,6 +32,7 @@
           User.updateUserData(this.user.id, {twinkies: this.user.twinkies}).then(() => {
             this.$store.commit('updateUser', {path: 'twinkies', data: this.user.twinkies - 10} );
           })
+          User.setInvestments({amount: 10, user: this.user, idea_card: this.idea});
         })
         .catch(() => {
           console.log('fuck')

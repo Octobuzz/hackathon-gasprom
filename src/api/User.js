@@ -19,7 +19,19 @@ const user = {
       }
     }
     );
-	}
+	},
+
+  setInvestments(data) {
+    return request.post('/investments',
+      data,
+      {
+        headers: {
+          Authorization:
+            `Bearer ${localStorage.getItem('token')}`,
+        }
+      }
+    )
+  }
 };
 
 export default user;
