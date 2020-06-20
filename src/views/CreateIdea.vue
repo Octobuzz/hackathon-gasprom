@@ -1,6 +1,9 @@
 <template>
 	<div class="creation-page">
 		<page-header />
+		<h1 class="creation-page__headline">
+			Создание идеи:
+		</h1>
 		<form
 			class="creation-page__form"
 			@submit="createIssue"
@@ -98,10 +101,16 @@ export default class Create extends Vue {
 		flex-direction: column;
     padding-top: 60px;
     background-color: $grey;
+    &__headline {
+      @include reset-text;
+      width: 75%;
+      margin: 25px auto;
+      text-align: left;
+    }
 		&__form {
-      width: 90%;
+      width: 75%;
       padding: 25px;
-      margin: 30px auto 0;
+      margin: 0 auto;
       display: flex;
 			flex-direction: column;
       background-color: $white;
@@ -121,7 +130,7 @@ export default class Create extends Vue {
       border: 1px solid $night;
       outline: none;
       &--headline {
-        width: 800px;
+        width: 50%;
       }
       &:hover,
       &:focus {
