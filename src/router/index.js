@@ -6,6 +6,7 @@ import Create from "../views/CreateIdea.vue";
 import Home from "../views/Home.vue";
 import NotFound from "../views/NotFound.vue";
 import IdeaPage from "../views/IdeaPage.vue";
+import FinalFight from "../views/FinalFight.vue";
 import TopIdeasDashboard from "../views/TopIdeasDashboard.vue";
 
 Vue.use(VueRouter);
@@ -42,11 +43,16 @@ const routes = [
 		component: IdeaPage,
 	},
 
-  {
-    path: '/top-ideas',
-    name: 'Топ идей',
-    component: TopIdeasDashboard,
-  },
+	{
+		path: '/top-ideas',
+		name: 'Топ идей',
+		component: TopIdeasDashboard,
+	},
+	{
+		path: '/final-fight',
+		name: 'Итоговая Битва',
+		component: FinalFight,
+	}
 ];
 
 const router = new VueRouter({
