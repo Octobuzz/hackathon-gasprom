@@ -63,6 +63,7 @@
 								v-for="comment in comments"
 								class="idea-page__comments"
 							>
+								<span class="comments__name">{{ user.username ? user.username : "Александр" }}</span>
 								<p
 									class="idea-page__comment"
 									v-html="comment.text"
@@ -93,10 +94,16 @@ import ideas from '../api/Ideas';
 import Ckeditor from '@ckeditor/ckeditor5-build-classic';
 import comment from '../api/Comment.js';
 import ToParticipateInIdea from "./ToParticipateInIdea.vue";
+import {mapState } from 'vuex';
 
   @Component({
   	components: {
 		  'join': ToParticipateInIdea,
+  	},
+  	computed: {
+  	  ...mapState({
+  		user: state => state.user,
+  		})
   	}
   })
 export default class IdeaPage extends Vue {
@@ -129,7 +136,7 @@ export default class IdeaPage extends Vue {
     addComment() {
     	comment.postComment({
     		text: this.comment,
-    		user: {},
+    		user: this.user,
     		idea_card: this.idea
     	}).then(() => {
     		this.comment = '';
@@ -169,7 +176,8 @@ export default class IdeaPage extends Vue {
 			align-items: center;
 			flex-direction: column;
 			border-radius: 5px;
-			overflow: scroll;
+			overflow-y: scroll;
+			overflow-x: hidden;
 			z-index: 9999;
       position: relative;
 			&::-webkit-scrollbar {
@@ -293,6 +301,12 @@ export default class IdeaPage extends Vue {
 		height: 100%;
 		width: 100%;
 		z-index: 9998;
+	}
+
+	.comments__name {
+		position: absolute;
+		font-weight: 900;
+		left: 15%;
 	}
 
 </style>
