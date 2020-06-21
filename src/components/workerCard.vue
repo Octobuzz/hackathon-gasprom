@@ -28,7 +28,8 @@ export default class workerCard extends Vue {
 
 <style scoped lang="scss">
 	.short-card {
-		width: 100%;
+		width: 95%;
+		margin: 0 auto;
 		height: 100px;
 		padding: 5px;
 		display: flex;

@@ -62,8 +62,11 @@ export default class TopIdeasDashboard extends Vue {
 				height: 45px;
 				position: absolute;
 				top: 50%;
-				left: 60px;
+				left: 55px;
 				transform: translateY(-50%);
+				@media (min-width: 1550px){
+					left: 45px;
+				}
 			}
 		}
 	}
