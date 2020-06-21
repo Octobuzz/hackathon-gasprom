@@ -43,7 +43,6 @@ export default class Feed extends Vue {
 		modalShow = false;
 
 		mounted() {
-			console.log(this.ideas);
 		  this.loadIdeas();
 		}
 
