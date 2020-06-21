@@ -8,10 +8,10 @@
 				{{ user.department ? user.department.department_name : 'Отдел разработки' }}
 			</h2>
 			<div class="short-card__investments">
-				Призраки: {{ user.ghosts }}
-			</div>
-			<div class="short-card__investments">
 				Твинки: {{ user.twinkies }}
+			</div>
+			<div class="short-card__ghost">
+				Призраки: {{ user.ghosts }}
 			</div>
 		</div>
 	</div>
@@ -69,6 +69,12 @@ export default class workerCard extends Vue {
 		}
 		&__investments {
 			color: $red;
+			font-size: 16px;
+			font-weight: bold;
+			text-align: left;
+		}
+		&__ghost {
+			color: $violet;
 			font-size: 16px;
 			font-weight: bold;
 			text-align: left;
