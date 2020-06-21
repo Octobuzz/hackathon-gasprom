@@ -3,42 +3,30 @@
 		<p class="top__headline">
 			Топ охотников
 		</p>
-		<idea
-			v-for="(idea, index) in topUsers.slice(0,5)"
+		<top-user
+			v-for="(user, index) in topUsers.slice(0,5)"
 			:key="index"
 			class="top__idea"
-			:idea="idea"
-		/>
-		<modal
-			v-if="modalShow"
-			:id="activeIdea"
-			@close="modalShow = false"
+			:user="user"
 		/>
 	</div>
 </template>
 
 <script>
 import {Vue, Component, Prop} from 'vue-property-decorator';
-import shortIdeaCard from './ShortIdeaCard.vue';
-import {mapState} from "vuex";
-import Ideas from "../api/Ideas";
+import workerCard from './workerCard.vue';
 import Modal from "./Modal.vue";
 import user from "../api/User";
 
   @Component({
   	components: {
-  		'idea': shortIdeaCard,
-  		Modal,
+  		'top-user': workerCard,
   	},
-  	computed: {
-  		...mapState({
-  			users: state => state.users,
-  		}),
-  	}
   })
 export default class TopIdeasDashboard extends Vue {
     activeIdea = 0;
     modalShow = false;
+    users = [];
     mounted() {
     	this.loadUsers();
     }
@@ -51,7 +39,9 @@ export default class TopIdeasDashboard extends Vue {
 
     loadUsers() {
     	user.getUsers().then((response) => {
-    		this.$store.commit('setUsers', response.data);
+    		this.users = response.data;
+    	}).catch((e) => {
+    	  console.log(e);
     	});
     }
   }
