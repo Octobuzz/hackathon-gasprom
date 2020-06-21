@@ -10,10 +10,12 @@
 					class="idea-page__close-button"
 					@click="$emit('close')"
 				>
-					Закрыть
+					<span class="visually-hidden">Закрыть</span>
 				</button>
-				<h2>Страница Идей</h2>
-				<div>
+				<h2 class="idea-page__headline">
+					Идея
+				</h2>
+				<div class="idea-page__idea">
 					<p class="idea-page__title">
 						{{ idea.idea_name }}
 					</p>
@@ -27,26 +29,46 @@
 						class="idea-page__text"
 						v-html="idea.text"
 					/>
-					<p v-if="idea.lifecycle_stage">
-						Статус: {{ idea.lifecycle_stage }}
-					</p>
 					<p
-						v-if="idea.ready_users"
-						class="idea-page__join"
+						v-if="idea.lifecycle_stage"
+						class="idea-page__status"
 					>
-						Присоединилось к исполнению: {{ idea.ready_users.length }}
+						<b>Статус:</b> {{ idea.lifecycle_stage }}
 					</p>
-					<p class="idea-page__tag">
-						Тэг: {{ idea.tag }}
-					</p>
-					<p>Инвестировано Твинков: {{ idea.twinkies }}</p>
+					<div class="idea-page__add-wrapper">
+						<p
+							v-if="idea.ready_users"
+							class="idea-page__add"
+						>
+							<b>Присоединилось к исполнению:</b> {{ idea.ready_users.length }}
+						</p>
+						<p class="idea-page__add">
+							<b>Тэг:</b> {{ idea.tag }}
+						</p>
+						<p class="idea-page__add">
+							<b>Инвестировано твинков:</b> {{ idea.twinkies }}
+						</p>
+					</div>
 					<join
 						:idea="idea"
 					/>
 				</div>
 				<div>
-					<h2>Раздел Комментариев</h2>
+					<h2 class="idea-page__headline">
+						Комментарии
+					</h2>
 					<div style="height: 200px">
+						<div class="idea-page__comment-wrapper">
+							<div
+								v-for="comment in comments"
+								class="idea-page__comments"
+							>
+								<p
+									class="idea-page__comment"
+									v-html="comment.text"
+								/>
+							</div>
+						</div>
 						<ckeditor
 							v-model="comment"
 							:editor="editor"
@@ -58,14 +80,6 @@
 						>
 							Добавить комментарий
 						</button>
-						<div class="idea-page__comments">
-							<div v-for="comment in comments">
-								<p
-									class="idea-page__comment"
-									v-html="comment.text"
-								/>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -135,7 +149,7 @@ export default class IdeaPage extends Vue {
 
 	.idea-page {
 		position: fixed;
-		z-index: 99;
+		z-index: 9999;
 		top: 0;
 		left: 0;
 		width: 100%;
@@ -147,7 +161,7 @@ export default class IdeaPage extends Vue {
 		transition: opacity 0.3s ease;
 		&__modal {
 			width: 700px;
-			height: 70%;
+			height: auto;
 			background-color: #ffffff;
 			padding: 20px;
 			display: flex;
@@ -156,17 +170,72 @@ export default class IdeaPage extends Vue {
 			flex-direction: column;
 			border-radius: 5px;
 			overflow: scroll;
-			z-index: 99;
+			z-index: 9999;
       position: relative;
 			&::-webkit-scrollbar {
 				display: none;
 			}
 		}
     &__close-button {
+      @include reset-button();
+      width: 25px;
+      height: 25px;
       position: absolute;
+      right: 20px;
+      background-image: url("../assets/svg/close.svg");
+      background-color: transparent;
+      &:hover,
+      &:focus {
+        opacity: 0.7;
+      }
+      &:active {
+        opacity: 0.5;
+      }
+    }
+    &__headline {
+      @include reset-text();
+      width: 90%;
+      margin-bottom: 15px;
+      border-bottom: 2px solid $grey;
+      text-align: left;
+    }
+    &__idea {
+      padding-left: 15px;
+      margin-bottom: 30px;
+    }
+    &__title {
+      padding-bottom: 5px;
+      font-size: 18px;
+      text-align: left;
+      font-weight: bold;
+    }
+    &__text {
+      text-align: left;
+      margin-bottom: 35px;
+    }
+    &__add-wrapper {
+      margin-bottom: 25px;
+      padding: 10px 20px;
+      border: 2px solid $violet;
+      text-align: left;
+      border-radius: 15px;
+    }
+    &__department,
+    &__status {
+      text-align: left;
+      text-decoration: underline;
+    }
+    &__add {
+      @include reset-text();
+      margin-bottom: 15px;
+      &:last-of-type {
+        margin: 0;
+      }
     }
     &__button {
       @include reset-button();
+      width: 265px;
+      margin-bottom: 25px;
       padding: 10px 15px;
       color: $white;
       font-weight: bold;
@@ -178,6 +247,30 @@ export default class IdeaPage extends Vue {
       }
       &:active {
         background-color: $button-violet;
+      }
+    }
+    &__comment-wrapper {
+
+    }
+    &__comments {
+
+    }
+    &__comment {
+      @include reset-text();
+      text-align: left;
+      padding: 5px 5px 5px 60px;
+      border-bottom: 2px solid $grey;
+      position: relative;
+      &::after {
+        content: url("../assets/svg/young.svg");
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        top: 3px;
+        left: -10px;
+        border: 5px solid $violet;
+        text-align: center;
+        border-radius: 50px;
       }
     }
 	}

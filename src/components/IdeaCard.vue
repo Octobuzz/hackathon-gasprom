@@ -82,7 +82,7 @@ export default class IdeaCard extends Vue {
 		position: absolute;
 		top: -27px;
 		padding: 15px 10px 15px 15px;
-		background-color: $azure;
+		background-color: $button-violet;
 		border-radius: 5px;
 		color: $white;
 		font-weight: bold;
