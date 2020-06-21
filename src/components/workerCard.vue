@@ -44,7 +44,7 @@ export default class workerCard extends Vue {
 			height: 55px;
 			position: absolute;
 			top: 15px;
-			left: 25px;
+			left: 20px;
 			border: 3px solid $violet;
 			border-radius: 50px;
 		}
