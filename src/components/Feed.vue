@@ -70,7 +70,7 @@ export default class Feed extends Vue {
 
 <style scoped lang="scss">
 	.idea-feed {
-		height: 85vh;
+		height: 83vh;
 		margin: 0 auto;
 	}
 </style>

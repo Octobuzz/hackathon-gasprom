@@ -39,6 +39,7 @@ import Modal from "./Modal.vue";
 export default class TopIdeasDashboard extends Vue {
     activeIdea = 0;
     modalShow = false;
+
   	mounted() {
     	this.loadIdeas();
   	}
@@ -65,6 +66,7 @@ export default class TopIdeasDashboard extends Vue {
 <style lang="scss" scoped>
 .top {
   padding: 5px 10px;
+	background-color: $white;
   &__headline {
     padding-left: 50px;
     font-size: 18px;
