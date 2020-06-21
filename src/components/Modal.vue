@@ -15,7 +15,7 @@
 					<p v-if="idea.department">
 						{{ idea.department.department_name }}
 					</p>
-					<p>{{ idea.text }}</p>
+					<p v-html="idea.text" />
 					<p v-if="idea.lifecycle_stage">
 						Статус: {{ idea.lifecycle_stage }}
 					</p>
