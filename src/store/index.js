@@ -6,12 +6,16 @@ Vue.use(Vuex);
 export default new Vuex.Store({
 	state: {
 		user: {},
+		users: [],
 		ideas_cards: [],
 		ideas_cards_by_id:{},
 
 	},
 
 	mutations: {
+		setUsers(state, users) {
+			state.users = users;
+		},
 		setUser(state, user) {
 			state.user = user;
 			localStorage.setItem('user', JSON.stringify(user));

@@ -5,11 +5,12 @@
 			<div class="container__content">
 				<div class="container__wrapper">
 					<div class="container__feed-wrapper">
-						<sort-tabs @sort="sortFeed"/>
-						<feed :sort-type="sortType"/>
+						<sort-tabs @sort="sortFeed" />
+						<feed :sort-type="sortType" />
 					</div>
 					<div class="container__aside">
-						<top-ideas />
+						<top-ideas class="aside__top" />
+						<top-hunters class="aside__top"/>
 					</div>
 				</div>
 			</div>
@@ -23,6 +24,7 @@ import Feed from '../components/Feed.vue';
 import SortTabs from '../components/SortTabs.vue';
 import Header from '../components/Header.vue';
 import topIdeas from '../components/TopIdeasDashboard.vue';
+import topHunters from '../components/TopEmployer.vue';
 
 	@Component({
 		components : {
@@ -30,9 +32,10 @@ import topIdeas from '../components/TopIdeasDashboard.vue';
 			'sort-tabs': SortTabs,
 			'page-header': Header,
 			'top-ideas': topIdeas,
+			'top-hunters': topHunters,
 		}
 	})
-export default class Dashboard {
+export default class Dashboard extends Vue{
 		sortType = 'Внутренние сервисы'
 	  sortFeed(sort) {
 	    this.sortType = sort;
@@ -59,13 +62,17 @@ export default class Dashboard {
 		position: relative;
   }
   &__aside {
-		height: fit-content;
+		height: 92vh;
 		width: 28%;
     min-width: 200px;
     margin-top: 15px;
     margin-left: 15px;
-		background-color: $white;
 		border-radius: 5px;
+		overflow-y: scroll;
+		overflow-x: visible;
+		&::-webkit-scrollbar {
+			display: none;
+		}
   }
   &__wrapper {
     width: 100%;
@@ -82,4 +89,8 @@ export default class Dashboard {
 		}
 	}
 }
+
+	.aside__top {
+		margin-bottom: 35px;
+	}
 </style>

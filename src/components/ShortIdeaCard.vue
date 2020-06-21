@@ -1,7 +1,7 @@
 <template>
 	<div class="short-card">
 		<p class="short-card__username">
-			Александр
+			{{ idea.create_user ? idea.create_user.username : "Александр" }}
 		</p>
 		<div class="short-card__wrapper">
 			<h2 class="short-card__headline">
@@ -72,6 +72,7 @@ export default class shortIdeaCard extends Vue {
       padding-top: 60px;
       padding-left: 5px;
       font-size: 16px;
+			width: 27%;
       border-right: 1px solid $grey;
     }
     &__investments {
