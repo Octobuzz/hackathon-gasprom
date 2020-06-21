@@ -8,7 +8,7 @@
 			<div class="fight__hunters">
 				<top-hunters class="fight__top" />
 				<p class="fight__power">
-					Общая сила: 923 твинка
+					Общая сила: {{ power }} твинка
 				</p>
 			</div>
 			<div class="fight__versus">
@@ -54,14 +54,33 @@
 import { Component, Vue } from 'vue-property-decorator';
 import Header from '../components/Header.vue';
 import topHunters from '../components/TopEmployer.vue';
+import user from '../api/User.js';
 
 	@Component({
 		components : {
 			'page-header': Header,
 			'top-hunters': topHunters,
-		}
+		},
+
 	})
 export default class FinalFight extends Vue{
+	  users = [];
+	  power = 0;
+	  mounted() {
+	    this.loadUsers();
+	  }
+	  loadUsers() {
+	    user.getUsers().then((response) => {
+	      this.users = response.data;
+	      this.countPower();
+	  	});
+	  }
+
+	   countPower() {
+	  	this.power = this.users.reduce((prev, next) => {
+	  		return	prev + next.twinkies;
+	  	}, 0);
+	  }
 	}
 </script>
 
