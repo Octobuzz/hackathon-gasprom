@@ -57,7 +57,7 @@ export default class Dashboard {
   }
   &__aside {
 		height: fit-content;
-		width: 25%;
+		width: 28%;
     min-width: 200px;
     margin-top: 15px;
     margin-left: 15px;
