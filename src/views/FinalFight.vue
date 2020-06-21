@@ -36,7 +36,7 @@ export default class FinalFight extends Vue{
     @include reset-text();
     color: $white;
     font-size: 50px;
-    margin: 35px 0;
+    margin: 45px 0;
   }
 }
 </style>
