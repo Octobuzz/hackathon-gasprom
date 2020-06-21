@@ -1,9 +1,12 @@
 <template>
-	<div>
-		Самые популярные проблемы и идеи
+	<div class="top">
+		<p class="top__headline">
+			Топ идей
+		</p>
 		<idea
 			v-for="(idea, index) in topIdeas.slice(0,5)"
 			:key="index"
+			class="top__idea"
 			:idea="idea"
 			@click.native="toIdea(idea.id)"
 		/>
@@ -14,10 +17,6 @@
 		/>
 	</div>
 </template>
-
-<style lang="scss" scoped>
-
-</style>
 
 <script>
 import {Vue, Component, Prop} from 'vue-property-decorator';
@@ -62,3 +61,24 @@ export default class TopIdeasDashboard extends Vue {
     }
   }
 </script>
+
+<style lang="scss" scoped>
+.top {
+  padding: 5px 10px;
+  &__headline {
+    padding-left: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    position: relative;
+    &::before {
+      content: url("../assets/svg/champion.svg");
+      width: 45px;
+      height: 45px;
+      position: absolute;
+      top: 50%;
+      left: 60px;
+      transform: translateY(-50%);
+    }
+  }
+}
+</style>
