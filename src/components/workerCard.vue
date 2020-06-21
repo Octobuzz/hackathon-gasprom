@@ -5,13 +5,13 @@
 		</p>
 		<div class="short-card__wrapper">
 			<h2 class="short-card__headline">
-				{{ user.department ? user.department.department_name : 'отдел разработки'}}
+				{{ user.department ? user.department.department_name : 'Отдел разработки' }}
 			</h2>
 			<div class="short-card__investments">
-				Твинки: {{ user.twinkies }}
-			</div>
-			<div>
 				Призраки: {{ user.ghosts }}
+			</div>
+			<div class="short-card__investments">
+				Твинки: {{ user.twinkies }}
 			</div>
 		</div>
 	</div>
