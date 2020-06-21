@@ -167,6 +167,9 @@ export default class Personal extends Vue {
 		width: 70%;
     margin: 0 auto;
 		overflow: scroll;
+		&::-webkit-scrollbar {
+			display: none;
+		}
 	}
   &__headline {
     @include reset-text();
