@@ -1,6 +1,10 @@
 <template>
 	<transition name="modal">
 		<div class="idea-page">
+			<div
+				class="overlay"
+				@click="$emit('close')"
+			/>
 			<div class="idea-page__modal">
 				<button @click="$emit('close')">
 					Закрыть
@@ -20,7 +24,7 @@
 					</p>
 					<p>Тэг: {{ idea.tag }}</p>
 					<p>Инвестировано Твинков: {{ idea.twinkies }}</p>
-					<join :idea="idea"></join>
+					<join :idea="idea" />
 				</div>
 				<div>
 					<h2>Раздел Комментариев</h2>
@@ -109,7 +113,7 @@ export default class IdeaPage extends Vue {
 
 	.idea-page {
 		position: fixed;
-		z-index: 9998;
+		z-index: 9997;
 		top: 0;
 		left: 0;
 		width: 100%;
@@ -131,6 +135,7 @@ export default class IdeaPage extends Vue {
 			flex-direction: column;
 			border-radius: 5px;
 			overflow: scroll;
+			z-index: 9999;
 			&::-webkit-scrollbar {
 				display: none;
 			}
@@ -148,6 +153,13 @@ export default class IdeaPage extends Vue {
 	.modal-leave-active .modal-container {
 		-webkit-transform: scale(1.1);
 		transform: scale(1.1);
+	}
+
+	.overlay {
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		z-index: 9998;
 	}
 
 </style>

@@ -101,6 +101,11 @@ export default class Create extends Vue {
 		flex-direction: column;
     padding-top: 60px;
     background-color: $grey;
+		overflow: scroll;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
     &__headline {
       @include reset-text;
       width: 75%;
