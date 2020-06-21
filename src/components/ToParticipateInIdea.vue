@@ -31,5 +31,19 @@ export default class AddTwinks extends Vue {
 </script>
 
 <style lang="scss" scoped>
-
+.add-twinks__button {
+  @include reset-button();
+  padding: 10px 15px;
+  color: $white;
+  font-weight: bold;
+  background-color: $azure;
+  border-radius: 5px;
+  &:hover,
+  &:focus {
+    background-color: $button-hover;
+  }
+  &:active {
+    background-color: $button-violet;
+  }
+}
 </style>

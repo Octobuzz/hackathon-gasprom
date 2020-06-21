@@ -46,7 +46,11 @@ export default class SortTabs {
     align-items: center;
   }
   &__item {
+    margin: 0 5px 0 0;
     position: relative;
+    &:last-of-type {
+      margin-right: 0;
+    }
     &:hover,
     &:focus {
       cursor: pointer;

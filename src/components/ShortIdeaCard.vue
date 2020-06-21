@@ -36,7 +36,7 @@ export default class shortIdeaCard extends Vue {
 
 <style scoped lang="scss">
 	.short-card {
-    width: 95%;
+    width: 98%;
 		margin: 0 auto;
     height: 100px;
     display: flex;
@@ -51,7 +51,7 @@ export default class shortIdeaCard extends Vue {
       height: 55px;
       position: absolute;
       top: 15px;
-      left: 18px;
+      left: 15px;
       border: 3px solid $violet;
       border-radius: 50px;
     }
@@ -69,10 +69,10 @@ export default class shortIdeaCard extends Vue {
       margin-top: 10px;
       padding-right: 8px;
       padding-top: 60px;
-      padding-left: 5px;
       font-size: 16px;
 			width: 27%;
       border-right: 1px solid $grey;
+      text-align: center;
     }
     &__investments {
       color: $red;

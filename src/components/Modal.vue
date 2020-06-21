@@ -6,25 +6,43 @@
 				@click="$emit('close')"
 			/>
 			<div class="idea-page__modal">
-				<button @click="$emit('close')">
+				<button
+					class="idea-page__close-button"
+					@click="$emit('close')"
+				>
 					Закрыть
 				</button>
 				<h2>Страница Идей</h2>
 				<div>
-					<p>{{ idea.idea_name }}</p>
-					<p v-if="idea.department">
+					<p class="idea-page__title">
+						{{ idea.idea_name }}
+					</p>
+					<p
+						v-if="idea.department"
+						class="idea-page__department"
+					>
 						{{ idea.department.department_name }}
 					</p>
-					<p v-html="idea.text" />
+					<p
+						class="idea-page__text"
+						v-html="idea.text"
+					/>
 					<p v-if="idea.lifecycle_stage">
 						Статус: {{ idea.lifecycle_stage }}
 					</p>
-					<p v-if="idea.ready_users">
+					<p
+						v-if="idea.ready_users"
+						class="idea-page__join"
+					>
 						Присоединилось к исполнению: {{ idea.ready_users.length }}
 					</p>
-					<p>Тэг: {{ idea.tag }}</p>
+					<p class="idea-page__tag">
+						Тэг: {{ idea.tag }}
+					</p>
 					<p>Инвестировано Твинков: {{ idea.twinkies }}</p>
-					<join :idea="idea" />
+					<join
+						:idea="idea"
+					/>
 				</div>
 				<div>
 					<h2>Раздел Комментариев</h2>
@@ -34,14 +52,18 @@
 							:editor="editor"
 						/>
 						<button
+							class="idea-page__button"
 							:disabled="!comment"
 							@click="addComment"
 						>
 							Добавить комментарий
 						</button>
-						<div>
+						<div class="idea-page__comments">
 							<div v-for="comment in comments">
-								<p v-html="comment.text" />
+								<p
+									class="idea-page__comment"
+									v-html="comment.text"
+								/>
 							</div>
 						</div>
 					</div>
@@ -108,12 +130,12 @@ export default class IdeaPage extends Vue {
 
 <style lang="scss">
 	.ck-editor__editable_inline {
-		height: 200px;
+		height: 100px;
 	}
 
 	.idea-page {
 		position: fixed;
-		z-index: 9997;
+		z-index: 99;
 		top: 0;
 		left: 0;
 		width: 100%;
@@ -123,23 +145,41 @@ export default class IdeaPage extends Vue {
 		justify-content: center;
 		align-items: center;
 		transition: opacity 0.3s ease;
-
 		&__modal {
-			width: 80%;
-			height: 90%;
+			width: 700px;
+			height: 70%;
 			background-color: #ffffff;
-			padding: 25px;
+			padding: 20px;
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
 			flex-direction: column;
 			border-radius: 5px;
 			overflow: scroll;
-			z-index: 9999;
+			z-index: 99;
+      position: relative;
 			&::-webkit-scrollbar {
 				display: none;
 			}
 		}
+    &__close-button {
+      position: absolute;
+    }
+    &__button {
+      @include reset-button();
+      padding: 10px 15px;
+      color: $white;
+      font-weight: bold;
+      background-color: $azure;
+      border-radius: 5px;
+      &:hover,
+      &:focus {
+        background-color: $button-hover;
+      }
+      &:active {
+        background-color: $button-violet;
+      }
+    }
 	}
 	.modal-enter {
 		opacity: 0;

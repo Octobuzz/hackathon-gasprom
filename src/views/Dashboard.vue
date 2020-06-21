@@ -10,7 +10,7 @@
 					</div>
 					<div class="container__aside">
 						<top-ideas class="aside__top" />
-						<top-hunters class="aside__top"/>
+						<top-hunters class="aside__top" />
 					</div>
 				</div>
 			</div>
@@ -50,7 +50,7 @@ export default class Dashboard extends Vue{
 }
 
 .container {
-  width: 90%;
+  width: 95%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -60,11 +60,17 @@ export default class Dashboard extends Vue{
     margin: 0 auto;
     display: flex;
 		position: relative;
+    @media (max-width: 1300px) {
+      width: 80%;
+    }
+    @media (max-width: 1150px) {
+      width: 91%;
+    }
   }
   &__aside {
 		height: 92vh;
+    min-width: 295px;
 		width: 28%;
-    min-width: 200px;
     margin-top: 15px;
     margin-left: 15px;
 		border-radius: 5px;
