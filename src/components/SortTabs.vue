@@ -33,7 +33,7 @@ export default class SortTabs {
 .sort {
   max-width: 650px;
   padding: 15px;
-  margin: 15px auto;
+  margin: 15px auto 35px auto;
   background-color: $white;
   border-radius: 5px;
   -webkit-box-shadow: 0px 2px 22px -10px rgba(153,153,153,0.3);
