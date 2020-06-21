@@ -1,20 +1,13 @@
 <template>
 	<div class="sort">
 		<ul class="sort__list">
-			<li class="sort__item sort__item--active">
-				Внутренние сервисы
-			</li>
-			<li class="sort__item">
-				Встреча
-			</li>
-			<li class="sort__item">
-				Офис
-			</li>
-			<li class="sort__item">
-				Оптимизация платформы
-			</li>
-			<li class="sort__item">
-				Другое
+			<li
+				v-for="(sort, index) in sortValues"
+				class="sort__item"
+				:class="{'sort__item--active': index === currentActive}"
+				@click="sortFeed(index)"
+			>
+				{{ sort }}
 			</li>
 		</ul>
 	</div>
@@ -26,6 +19,13 @@ import { Vue, Component } from 'vue-property-decorator';
 @Component({
 })
 export default class SortTabs {
+  sortValues = ["Внутренние сервисы", "Встреча", "Офис", "Оптимизация платформы", "Другое"]
+	currentActive = 0;
+
+	sortFeed(index) {
+	  this.currentActive = index;
+  	this.$emit('sort', this.sortValues[this.currentActive]);
+	}
 }
 </script>
 

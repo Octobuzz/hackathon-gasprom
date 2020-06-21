@@ -1,7 +1,7 @@
 <template>
 	<div class="idea-feed">
 		<idea
-			v-for="(idea, index) in ideas.slice().reverse()"
+			v-for="(idea, index) in filterIdeas.slice().reverse()"
 			:key="index"
 			:idea="idea"
 			@click.native="toIdea(idea.id)"
@@ -20,29 +20,30 @@
 </template>
 
 <script>
-import {Vue, Component} from 'vue-property-decorator';
+import {Component, Prop, Vue} from 'vue-property-decorator';
 import Ideas from '../api/Ideas';
 import IdeaCard from './IdeaCard.vue';
-import { mapState }  from 'vuex';
+import {mapState} from 'vuex';
 import Modal from '../components/Modal.vue';
 
-@Component({
-	components: {
+  @Component({
+  	components: {
 	  'idea': IdeaCard,
-		Modal,
-	},
-	computed: {
-		...mapState({
-			ideas: state => state.ideas_cards,
-		}),
-	}
-})
+  		Modal,
+  	},
+  	computed: {
+  		...mapState({
+  			ideas: state => state.ideas_cards,
+  		}),
+  	}
+  })
 export default class Feed extends Vue {
+  @Prop(String) sortType;
 		posts = 10;
 		activeIdea = 0;
 		modalShow = false;
 
-		mounted() {
+		created() {
 		  this.loadIdeas();
 		}
 
@@ -56,11 +57,15 @@ export default class Feed extends Vue {
 		  this.posts+=10;
 		}
 
+		get filterIdeas () {
+			return this.ideas.filter((el) => el.tag === this.sortType);
+		}
+
 		toIdea(id) {
 		  this.activeIdea = id;
 		  this.modalShow = true;
 		}
-}
+  }
 </script>
 
 <style scoped lang="scss">

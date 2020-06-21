@@ -5,8 +5,8 @@
 			<div class="container__content">
 				<div class="container__wrapper">
 					<div class="container__feed-wrapper">
-						<sort-tabs />
-						<feed />
+						<sort-tabs @sort="sortFeed"/>
+						<feed :sort-type="sortType"/>
 					</div>
 					<div class="container__aside">
 						<top-ideas />
@@ -33,7 +33,10 @@ import topIdeas from '../components/TopIdeasDashboard.vue';
 		}
 	})
 export default class Dashboard {
-
+		sortType = 'Внутренние сервисы'
+	  sortFeed(sort) {
+	    this.sortType = sort;
+		}
 	}
 </script>
 
