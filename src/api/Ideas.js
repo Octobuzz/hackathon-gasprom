@@ -27,7 +27,13 @@ const ideas = {
 		});
 	},
 	updateIdea: (id, data) => {
-		return request.put(`/idea-cards/${id}`, data);
+		return request.put(`/idea-cards/${id}`, data, {
+			headers: {
+				Authorization:
+					`Bearer ${localStorage.getItem('token')}`,
+			},
+		}
+		);
 	}
 };
 

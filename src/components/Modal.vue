@@ -20,6 +20,7 @@
 					</p>
 					<p>Тэг: {{ idea.tag }}</p>
 					<p>Инвестировано Твинков: {{ idea.twinkies }}</p>
+					<join :idea="idea"></join>
 				</div>
 				<div>
 					<h2>Раздел Комментариев</h2>
@@ -51,8 +52,13 @@ import { Vue, Component, Prop} from 'vue-property-decorator';
 import ideas from '../api/Ideas';
 import Ckeditor from '@ckeditor/ckeditor5-build-classic';
 import comment from '../api/Comment.js';
+import ToParticipateInIdea from "./ToParticipateInIdea.vue";
 
-  @Component()
+  @Component({
+  	components: {
+		  'join': ToParticipateInIdea,
+  	}
+  })
 export default class IdeaPage extends Vue {
     @Prop(Number) id
     editor = Ckeditor;
@@ -67,7 +73,6 @@ export default class IdeaPage extends Vue {
 
     loadIdea(id) {
     	ideas.getIdea(id).then((response) => {
-    		console.log(response.data);
     		this.idea =	response.data;
     	});
     }

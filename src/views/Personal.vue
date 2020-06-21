@@ -77,6 +77,10 @@ export default class Personal extends Vue {
   	return this.idea_cards.filter((el) => {
   		if (el.create_user) {
   			return el.create_user.id === this.user.id;
+  		} else {
+  		  return  !!el.ready_users.find((el) => {
+  		    return el.id === this.user.id;
+  			});
   		}
   	});
   }
