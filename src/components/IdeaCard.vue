@@ -50,7 +50,7 @@ export default class IdeaCard extends Vue {
 .idea {
 	position: relative;
 	padding: 45px 25px 25px;
-	margin-bottom: 35px;
+	margin-bottom: 45px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -63,7 +63,7 @@ export default class IdeaCard extends Vue {
 	box-shadow: 0px 2px 22px -10px rgba(153, 153, 153, 0.3);
 
 	&__main {
-		margin-bottom: 10px;
+		margin-bottom: 15px;
 	}
 
 	&__headline {
@@ -88,19 +88,13 @@ export default class IdeaCard extends Vue {
 		font-weight: bold;
 		display: flex;
 
-		&:hover,
-		&:focus {
-			background-color: $button-hover;
-		}
-
-		&:active {
-			background-color: $button-violet;
-		}
-
 		&::after {
 			content: url("../assets/svg/macaron.svg");
 			width: 40px;
 			height: 30px;
+			margin-left: 4px;
+			margin-top: -4px;
+
 		}
 	}
 
